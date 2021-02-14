@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // login สำเร็จ
-            return redirect("/user");
+            return redirect("/");
         }
 
         return back()->withErrors([
@@ -38,5 +38,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        Auth::logout();
+        return redirect('/auth/login');
     }
 }
