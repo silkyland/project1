@@ -19,4 +19,15 @@ class CategoryController extends Controller
     {
         return view('category.create');
     }
+
+    public function store(Request $request)
+    {
+        $name = $request->input('name');
+
+        $category = new Category();
+        $category->name = $name;
+        $category->save();
+
+        return redirect('/category');
+    }
 }
